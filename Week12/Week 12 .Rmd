@@ -1,0 +1,97 @@
+---
+title: "Week 12 Lab"
+author: 'Hanoaf Al Nasser: A18008237'
+date: "11/07/2024"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+# Section 1. Proportion og G/G in a population 
+
+Downloaded a csv file from Ensemble < 
+https://useast.ensembl.org/Homo_sapiens/Variation/Sample?db=core;r=17:39894595-39895595;v=rs8067378;vdb=variation;vf=959672880#373531_tablePanel
+
+Here we read this csv file 
+
+
+Find the proportion 
+
+```{r}
+mxl <- read.csv("373531-SampleGenotypes-Homo_sapiens_Variation_Sample_rs8067378.csv")
+head(mxl)
+```
+```{r}
+table(mxl$Genotype..forward.strand.)
+```
+
+```{r}
+table(mxl$Genotype..forward.strand.) / nrow(mxl) * 100
+```
+
+Now let's look at a different population. I picked the GBR. 
+
+```{r}
+gbr <- read.csv("373522-SampleGenotypes-Homo_sapiens_Variation_Sample_rs8067378.csv")
+```
+
+Find proportion of G|G
+
+```{r}
+round(table(gbr$Genotype..forward.strand.) / nrow(gbr) * 100, 2)
+```
+
+
+This variant is associated with childhood asthma is more frequent in the GBR population than the MKL population. 
+
+Lets now dig into this further.
+
+## Section 4: Population analysis 
+
+> Q13: Read this file into R and determine the sample size for each genotype and their corresponding median expression levels for each of these genotypes.
+
+
+```{r}
+expr <- read.table("rs8067378_ENSG00000172057.6.txt")
+head(expr)
+
+```
+
+```{r}
+nrow(expr)
+```
+
+```{r}
+table(expr$geno)
+```
+
+```{r}
+library(ggplot2)
+
+```
+ 
+ 
+Lets make a boxplot 
+
+```{r}
+ggplot(expr) + aes(geno, exp, fill = geno) + geom_boxplot(notch = TRUE)
+```
+
+
+> Q14: Generate a boxplot with a box per genotype, what could you infer from the relative expression value between A/A and G/G displayed in this plot? Does the SNP effect the expression of ORMDL3?
+
+They have different distributions, G/G is significantly different from the A/G and the A/A. The G/G is associated with having a reduced expression of ORMDL3. 
+
+
+
+
+
+
+
+
+
+
+
