@@ -1,7 +1,7 @@
 ---
 title: "Class 14: RNASeq analysis Mini Project"
 author: "Hanoaf Al Nasser (PID:A18008237)"
-format: pdf
+format: gfm
 ---
 
 
