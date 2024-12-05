@@ -1,7 +1,7 @@
 ---
 title: "Class 15: Pertussis and the CMI-PB project"
 author: "Hanoaf Al Nasser (PID: A18008237)"
-format: pdf
+format: gfm
 ---
 
 ## background 
